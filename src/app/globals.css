@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-inter: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better focus styles */
+:focus-visible {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
+}
+
+/* Article content styling */
+.prose {
+  @apply text-gray-700 leading-relaxed;
+}
+
+.prose h2 {
+  @apply text-2xl font-bold text-gray-900 mt-12 mb-4;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold text-gray-900 mt-8 mb-3;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-4 pl-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose table {
+  @apply w-full mb-6 border-collapse;
+}
+
+.prose th {
+  @apply bg-gray-50 text-left text-sm font-semibold text-gray-900 px-4 py-3 border-b border-gray-200;
+}
+
+.prose td {
+  @apply text-sm text-gray-700 px-4 py-3 border-b border-gray-100;
+}
+
+.prose a {
+  @apply text-emerald-600 hover:text-emerald-700 underline;
+}
+
+.prose strong {
+  @apply font-semibold text-gray-900;
+}
+
+/* Key insight box */
+.key-insight {
+  @apply bg-emerald-50 border-l-4 border-emerald-500 rounded-r-lg p-6 my-8;
+}
+
+.key-insight p {
+  @apply text-lg font-medium text-gray-900 mb-0;
+}
+
+/* Last updated badge */
+.last-updated {
+  @apply text-sm text-gray-500 mb-6;
+}
+
+/* Author byline */
+.author-byline {
+  @apply flex items-center space-x-3 text-sm text-gray-600 mb-8 pb-8 border-b border-gray-200;
+}
+
+/* FAQ section styling */
+.faq-section h3 {
+  @apply text-lg font-semibold text-gray-900 mb-2;
+}
+
+.faq-section p {
+  @apply text-gray-600;
 }
