@@ -73,9 +73,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <OrganizationSchema />
-      </head>
-      <body className="min-h-screen bg-white text-gray-900 antialiased">
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-DRKJGZEVT1"
@@ -89,6 +86,9 @@ export default function RootLayout({
             gtag('config', 'G-DRKJGZEVT1');
           `}
         </Script>
+        <OrganizationSchema />
+      </head>
+      <body className="min-h-screen bg-white text-gray-900 antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />
