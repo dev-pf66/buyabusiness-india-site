@@ -73,8 +73,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        <OrganizationSchema />
+      </head>
+      <body className="min-h-screen bg-white text-gray-900 antialiased">
+        {/* Google tag (gtag.js) */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-DGBCDTDDDX"
+          src="https://www.googletagmanager.com/gtag/js?id=G-DRKJGZEVT1"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -82,12 +86,9 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-DGBCDTDDDX');
+            gtag('config', 'G-DRKJGZEVT1');
           `}
         </Script>
-        <OrganizationSchema />
-      </head>
-      <body className="min-h-screen bg-white text-gray-900 antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />
