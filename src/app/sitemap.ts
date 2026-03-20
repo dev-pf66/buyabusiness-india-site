@@ -1,9 +1,10 @@
 import { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://buyabusiness-india.com";
 
-  // Only include pages that actually exist
+  // Static pages
   const staticPages = [
     { path: "", priority: 1, changeFrequency: "weekly" as const },
     { path: "/guide", priority: 0.9, changeFrequency: "monthly" as const },
@@ -12,15 +13,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/guide/due-diligence", priority: 0.9, changeFrequency: "monthly" as const },
     { path: "/resources", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/resources/checklist", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/resources/calculator", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/resources/glossary", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
     { path: "/newsletter", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/about", priority: 0.6, changeFrequency: "monthly" as const },
     { path: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
   ];
 
-  return staticPages.map((page) => ({
+  const staticSitemap = staticPages.map((page) => ({
     url: `${baseUrl}${page.path}`,
-    lastModified: new Date(),
+    lastModified: new Date("2026-03-20"),
     changeFrequency: page.changeFrequency,
     priority: page.priority,
   }));
+
+  // Dynamic blog posts
+  const posts = getAllPosts();
+  const blogSitemap = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.date ? new Date(post.date) : new Date("2026-03-20"),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticSitemap, ...blogSitemap];
 }

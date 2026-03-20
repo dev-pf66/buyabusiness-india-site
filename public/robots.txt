@@ -51,4 +51,4 @@ User-agent: Applebot
 Allow: /
 
 # Sitemap location
-Sitemap: https://buyabusiness-india-site.vercel.app/sitemap.xml
+Sitemap: https://buyabusiness-india.com/sitemap.xml

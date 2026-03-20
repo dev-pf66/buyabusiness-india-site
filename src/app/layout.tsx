@@ -50,12 +50,21 @@ export const metadata: Metadata = {
     title: "Buy a Business India — Learn How to Acquire Small Businesses",
     description:
       "The complete guide to buying a small business in India. Learn valuation, due diligence, financing, and how to find businesses for sale.",
+    images: [
+      {
+        url: "https://buyabusiness-india.com/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Buy a Business India — Learn How to Acquire Small Businesses",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Buy a Business India — Learn How to Acquire Small Businesses",
     description:
       "The complete guide to buying a small business in India. Learn valuation, due diligence, financing, and how to find businesses for sale.",
+    images: ["https://buyabusiness-india.com/opengraph-image"],
   },
   alternates: {
     canonical: "https://buyabusiness-india.com",
@@ -73,6 +82,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        {/* Preconnect hints for performance */}
+        <link rel="preconnect" href="https://plausible.io" />
+        <link rel="preconnect" href="https://api.convertkit.com" />
+        <link rel="dns-prefetch" href="https://plausible.io" />
+        <link rel="dns-prefetch" href="https://api.convertkit.com" />
+        
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-DRKJGZEVT1"
@@ -86,6 +101,30 @@ export default function RootLayout({
             gtag('config', 'G-DRKJGZEVT1');
           `}
         </Script>
+        {/* Meta Pixel Code */}
+        <Script id="meta-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1612594164203265');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1612594164203265&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
         <OrganizationSchema />
       </head>
       <body className="min-h-screen bg-white text-gray-900 antialiased">
