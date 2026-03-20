@@ -50,12 +50,21 @@ export const metadata: Metadata = {
     title: "Buy a Business India — Learn How to Acquire Small Businesses",
     description:
       "The complete guide to buying a small business in India. Learn valuation, due diligence, financing, and how to find businesses for sale.",
+    images: [
+      {
+        url: "https://buyabusiness-india.com/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Buy a Business India — Learn How to Acquire Small Businesses",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Buy a Business India — Learn How to Acquire Small Businesses",
     description:
       "The complete guide to buying a small business in India. Learn valuation, due diligence, financing, and how to find businesses for sale.",
+    images: ["https://buyabusiness-india.com/opengraph-image"],
   },
   alternates: {
     canonical: "https://buyabusiness-india.com",
@@ -73,6 +82,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        {/* Preconnect hints for performance */}
+        <link rel="preconnect" href="https://plausible.io" />
+        <link rel="preconnect" href="https://api.convertkit.com" />
+        <link rel="dns-prefetch" href="https://plausible.io" />
+        <link rel="dns-prefetch" href="https://api.convertkit.com" />
+        
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-DRKJGZEVT1"

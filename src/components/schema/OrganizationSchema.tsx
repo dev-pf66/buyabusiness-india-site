@@ -4,7 +4,7 @@ export function OrganizationSchema() {
     "@type": "Organization",
     name: "Buy a Business India",
     url: "https://buyabusiness-india.com",
-    logo: "https://buyabusiness-india.com/logo.png",
+    logo: "https://buyabusiness-india.com/logo.svg",
     description:
       "Educational resource for buying small businesses in India. Guides, tools, and market insights.",
     sameAs: [
