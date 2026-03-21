@@ -33,11 +33,11 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://plausible.io",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://plausible.io https://www.googletagmanager.com https://connect.facebook.net",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://plausible.io https://api.convertkit.com",
+      "connect-src 'self' https://plausible.io https://api.convertkit.com https://www.google-analytics.com https://www.facebook.com",
       "frame-ancestors 'none'"
     ].join('; ')
   }
