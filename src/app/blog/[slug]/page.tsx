@@ -24,27 +24,103 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Post Not Found" };
   }
 
+  const postUrl = `https://buyabusiness-india.com/blog/${slug}`;
+  const articleTags = post.keywords && post.keywords.length > 0
+    ? post.keywords
+    : (post.tags || []);
+
   return {
     title: post.title,
     description: post.description,
-    authors: [{ name: post.author }],
+    authors: [{ name: post.author, url: post.authorUrl }],
+    keywords: articleTags.join(", "),
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+    },
     openGraph: {
       title: post.title,
       description: post.description,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.date,
       authors: [post.author],
-      url: `https://buyabusiness-india.com/blog/${slug}`,
-      images: post.image ? [{ url: post.image }] : undefined,
+      url: postUrl,
+      siteName: "Buy a Business India",
+      locale: "en_IN",
+      images: post.image
+        ? [{ url: post.image, width: 1200, height: 630, alt: post.title }]
+        : undefined,
+      tags: articleTags,
     },
     twitter: {
       card: "summary_large_image",
+      site: "@buyabizindia",
+      creator: "@buyabizindia",
       title: post.title,
       description: post.description,
-      images: post.image ? [post.image] : undefined,
+      images: post.image ? [{ url: post.image, alt: post.title }] : undefined,
     },
     alternates: {
-      canonical: `https://buyabusiness-india.com/blog/${slug}`,
+      canonical: postUrl,
+      languages: { "en-IN": postUrl },
+    },
+    other: {
+      // Geographic
+      "geo.region": "IN",
+      "geo.country": "India",
+      "geo.placename": "India",
+      // Language & audience
+      "language": "en-IN",
+      "content-language": "en-IN",
+      "target": "all",
+      "audience": "all",
+      "revisit-after": "7 days",
+      // Classification
+      "classification": "Business, Finance, Investment, M&A",
+      "subject": post.description,
+      "topic": (post.tags || []).join(", "),
+      "category": "Business Acquisition",
+      "coverage": "India",
+      "distribution": "global",
+      "rating": "general",
+      // Dublin Core
+      "DC.title": post.title,
+      "DC.creator": post.author,
+      "DC.subject": (post.tags || []).join("; "),
+      "DC.description": post.description,
+      "DC.publisher": "Buy a Business India",
+      "DC.contributor": post.author,
+      "DC.date": post.date,
+      "DC.type": "Text",
+      "DC.format": "text/html",
+      "DC.identifier": postUrl,
+      "DC.source": "https://buyabusiness-india.com",
+      "DC.language": "en-IN",
+      "DC.relation": "https://buyabusiness-india.com/blog",
+      "DC.coverage": "India",
+      "DC.rights": "Copyright Buy a Business India",
+      // Mobile
+      "HandheldFriendly": "True",
+      "MobileOptimized": "320",
+      // Ownership & copyright
+      "copyright": "Buy a Business India",
+      "owner": "Buy a Business India",
+      "url": postUrl,
+      "identifier-URL": postUrl,
+      // SEO signals
+      "news_keywords": articleTags.slice(0, 10).join(", "),
+      "abstract": post.description,
+      "summary": post.description,
+      "pagename": post.title,
+      "pagetopic": (post.tags || []).slice(0, 3).join(", "),
+      // Article metadata
+      "article:content_tier": "free",
+      "article:opinion": "false",
+      "article:section": (post.tags || [])[0] || "Business",
+      // Social
+      "fb:app_id": "buyabusiness-india",
     },
   };
 }

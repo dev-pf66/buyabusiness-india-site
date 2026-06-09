@@ -13,6 +13,7 @@ export interface BlogPost {
   authorUrl?: string;
   image?: string;
   tags?: string[];
+  keywords?: string[];
   readingTime: number;
   content: string;
   faqs?: { question: string; answer: string }[];
@@ -27,6 +28,7 @@ export interface BlogPostMeta {
   author: string;
   image?: string;
   tags?: string[];
+  keywords?: string[];
   readingTime: number;
 }
 
@@ -57,6 +59,7 @@ export function getAllPosts(): BlogPostMeta[] {
       author: data.author || "Buy a Business India",
       image: data.image,
       tags: data.tags || [],
+      keywords: data.keywords || [],
       readingTime: calculateReadingTime(content),
     };
   });
@@ -84,6 +87,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     authorUrl: data.authorUrl,
     image: data.image,
     tags: data.tags || [],
+    keywords: data.keywords || [],
     readingTime: calculateReadingTime(content),
     content,
     faqs: data.faqs,
