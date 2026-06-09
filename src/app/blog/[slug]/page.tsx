@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getPostBySlug, getAllPosts, getRelatedPosts } from "@/lib/blog";
 import { ArticleSchema } from "@/components/schema/ArticleSchema";
 import { FAQSchema } from "@/components/schema/FAQSchema";
@@ -296,7 +297,11 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Content */}
         <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="prose prose-lg prose-emerald max-w-none">
-            <MDXRemote source={post.content} components={components} />
+            <MDXRemote
+                source={post.content}
+                components={components}
+                options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+              />
           </div>
         </div>
 
