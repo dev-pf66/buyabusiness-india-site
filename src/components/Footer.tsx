@@ -8,6 +8,8 @@ const footerLinks = {
   ],
   resources: [
     { name: "DD Checklist", href: "/resources/checklist" },
+    { name: "Deal Calculator", href: "/resources/calculator" },
+    { name: "Blog", href: "/blog" },
     { name: "All Resources", href: "/resources" },
   ],
   company: [

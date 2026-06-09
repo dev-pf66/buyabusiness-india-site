@@ -32,7 +32,7 @@ const guides = [
   {
     title: "Financing Your Acquisition",
     description: "Loans, seller financing, and creative structures.",
-    href: "/guide/financing",
+    href: "/guide/how-to-buy",
     icon: "💰",
   },
 ];

@@ -84,9 +84,7 @@ export default function RootLayout({
       <head>
         {/* Preconnect hints for performance */}
         <link rel="preconnect" href="https://plausible.io" />
-        <link rel="preconnect" href="https://api.convertkit.com" />
         <link rel="dns-prefetch" href="https://plausible.io" />
-        <link rel="dns-prefetch" href="https://api.convertkit.com" />
         
         {/* Google tag (gtag.js) */}
         <Script
