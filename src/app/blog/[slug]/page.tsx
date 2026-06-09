@@ -170,6 +170,15 @@ const components = {
   pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
     <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4" {...props} />
   ),
+  img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      {...props}
+      alt={props.alt || ""}
+      className="w-full rounded-xl my-6 object-cover shadow-sm"
+      style={{ maxHeight: "420px" }}
+    />
+  ),
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="overflow-x-auto mb-4">
       <table className="min-w-full divide-y divide-gray-200" {...props} />
