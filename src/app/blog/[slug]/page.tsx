@@ -29,9 +29,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const articleTags = post.keywords && post.keywords.length > 0
     ? post.keywords
     : (post.tags || []);
+  const seoTitle = post.seoTitle || post.title;
 
   return {
-    title: post.title,
+    title: seoTitle,
     description: post.description,
     authors: [{ name: post.author, url: post.authorUrl }],
     keywords: articleTags.join(", "),
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
     },
     openGraph: {
-      title: post.title,
+      title: seoTitle,
       description: post.description,
       type: "article",
       publishedTime: post.date,
@@ -59,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       site: "@buyabizindia",
       creator: "@buyabizindia",
-      title: post.title,
+      title: seoTitle,
       description: post.description,
       images: post.image ? [{ url: post.image, alt: post.title }] : undefined,
     },
@@ -87,7 +88,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "distribution": "global",
       "rating": "general",
       // Dublin Core
-      "DC.title": post.title,
+      "DC.title": seoTitle,
       "DC.creator": post.author,
       "DC.subject": (post.tags || []).join("; "),
       "DC.description": post.description,
@@ -114,7 +115,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "news_keywords": articleTags.slice(0, 10).join(", "),
       "abstract": post.description,
       "summary": post.description,
-      "pagename": post.title,
+      "pagename": seoTitle,
       "pagetopic": (post.tags || []).slice(0, 3).join(", "),
       // Article metadata
       "article:content_tier": "free",
