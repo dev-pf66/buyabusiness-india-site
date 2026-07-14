@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const seoTitle = post.seoTitle || post.title;
 
   return {
-    title: seoTitle,
+    title: { absolute: seoTitle },
     description: post.description,
     authors: [{ name: post.author, url: post.authorUrl }],
     keywords: articleTags.join(", "),
